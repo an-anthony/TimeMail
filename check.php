@@ -1,7 +1,14 @@
-<?php 
-  require_once "config.php";
+<!doctype html>
+<html>
+
+<head>
+    <?php require_once './common/meta.php'; ?>
+</head>
+
+<?php
+  require_once "./common/config.php";
   $code = $_GET['c'];
-  $arr = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `check` WHERE `code`='$code';"));
+  $arr = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `check` WHERE `code`='$code';")); // TODO: sql注入防御
   @$uid = $arr['uid'];
   @$timefrom = $arr['time'];
   //获取输入请求时间,用于验证是否失效
@@ -28,39 +35,34 @@
     mysqli_query($conn,"INSERT INTO `waiting` VALUES('$uid','$topic','$content','$email','$timenow','$time','$ip')");
     
     $info = "恭喜你,验证成功!";
-    header("Refresh:10;url=\"./index.php\"");
   }
 ?>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-        <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.1/mdui/css/mdui.min.css">
-        <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.1/mdui/js/mdui.min.js"></script>
-        <title>
-            <?php echo TITLE;?>
-        </title>
-    </head>
-      <body background="https://cdn.jsdelivr.net/gh/soxft/cdn@latest/time/img/background.png">
+
+<body>
+    <?php require_once ("./common/navbar.php"); ?>
     <div style="Height:40px"></div>
     <div class="mdui-container" style="max-width: 500px;">
         <div class="mdui-card">
-                <div class="mdui-card-menu">
-                    <button onclick="window.location.href='/'" class="mdui-btn mdui-btn-icon mdui-text-color-grey"><i class="mdui-icon material-icons">home</i>
-                    </button>
-                </div>
+            <div class="mdui-card-menu">
+                <button onclick="window.location.href='/'" class="mdui-btn mdui-btn-icon mdui-text-color-grey"><i class="mdui-icon material-icons">home</i>
+                </button>
+            </div>
             <div class="mdui-card-primary">
                 <div class="mdui-card-primary-title">邮件确认</div>
                 <div class="mdui-card-primary-subtitle">Corfirm State</div>
             </div>
             <div class="mdui-card-content">
-              <center>
-                <h2><?php echo $info ?></h2>
-              </center>
+                <center>
+                    <h2><?php echo $info ?></h2>
+                </center>
                 <br>
             </div>
         </div>
     </div>
-    </body>
+</body>
+
+
+
+
+    <?php require_once './common/footer.php'; ?>
 </html>

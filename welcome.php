@@ -13,7 +13,6 @@
         <meta name="description" content="TimeMail时光邮局 - 给未来写封信" />
         <meta name="keywords" content="TimeMail,时光邮局,给未来写封信,xcsoft,星辰日记,php,xc-blog,soxft" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-        <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/soxft/cdn@latest/time/img/favicon.ico" media="screen" />
         <title>欢迎使用 - TimeMail - 时光邮局</title>
         <!-- CSS -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/soxft/cdn@latest/mdui/css/mdui.min.css">
@@ -68,7 +67,7 @@
         </style>
     </head>
     <!-- NO复制 -->
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<body>
     <header id="appbar" class="mdui-appbar mdui-appbar-fixed">
         <!-- 导航栏 -->
         <div class="mdui-toolbar mdui-color-theme">
@@ -114,9 +113,6 @@
         <!-- JavaScript文件引入(CDN) -->
         <script src="//cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/js/mdui.min.js"></script>
         <!-- 页面内JavaScript文件 -->
-        <script>
-          console.log("\n %c XCSOFT %c XSOT.CN ","color:#444;background:#eee;padding:5px 0;", "color:#eee;background:#444;padding:5px 0;");
-        </script>
     </body>
 
 </html>

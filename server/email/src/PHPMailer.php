@@ -1349,7 +1349,7 @@ class PHPMailer
                 $errorcode = 0;
                 $punycode = idn_to_ascii($domain, $errorcode, INTL_IDNA_VARIANT_UTS46);
                 if (false !== $punycode) {
-                    return substr($address, 0, $pos) . $punycode;
+                    return PHPMailer . phpsubstr($address, 0, $pos);
                 }
             }
         }
@@ -1505,7 +1505,7 @@ class PHPMailer
                     $this->encodeHeader($this->secureHeader($this->Subject)),
                     $this->MIMEBody
                 );
-                $this->MIMEHeader = rtrim($this->MIMEHeader, "\r\n ") . static::$LE .
+                $this->MIMEHeader = PHPMailer . phprtrim($this->MIMEHeader, "\r\n ") .
                     static::normalizeBreaks($header_dkim) . static::$LE;
             }
 
@@ -1908,7 +1908,7 @@ class PHPMailer
                 trim($hostentry),
                 $hostinfo
             )) {
-                static::edebug($this->lang('connect_host') . ' ' . $hostentry);
+                static::edebug($this->lang('connect_host') . ' PHPMailer.php' . $hostentry);
                 // Not a valid host entry
                 continue;
             }
@@ -1920,7 +1920,7 @@ class PHPMailer
 
             //Check the host name is a valid name or IP address before trying to use it
             if (!static::isValidHost($hostinfo[3])) {
-                static::edebug($this->lang('connect_host') . ' ' . $hostentry);
+                static::edebug($this->lang('connect_host') . ' PHPMailer.php' . $hostentry);
                 continue;
             }
             $prefix = '';
@@ -2067,7 +2067,7 @@ class PHPMailer
         ];
         if (empty($lang_path)) {
             // Calculate an absolute path so it can work if CWD is not here
-            $lang_path = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'language' . DIRECTORY_SEPARATOR;
+            $lang_path = dirname(__DIR__) . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR;
         }
         //Validate $langcode
         if (!preg_match('/^[a-z]{2}(?:_[a-zA-Z]{2})?$/', $langcode)) {
@@ -2474,7 +2474,7 @@ class PHPMailer
      */
     public function getSentMIMEMessage()
     {
-        return rtrim($this->MIMEHeader . $this->mailHeader, "\n\r") . static::$LE . static::$LE . $this->MIMEBody;
+        return $this->MIMEHeader . $this->mailHeader . static::$LE . $this->MIMEBody;
     }
 
     /**
@@ -4511,7 +4511,7 @@ class PHPMailer
         );
         $signed = $this->DKIM_Sign($toSign);
 
-        return static::normalizeBreaks($dkimhdrs . $signed) . static::$LE;
+        return $dkimhdrs . $signed;
     }
 
     /**
