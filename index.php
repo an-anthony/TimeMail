@@ -2,7 +2,7 @@
     require_once "./common/config.php";
     if(!IF_SET)
     {
-        header('Refresh:0;url=\'welcome.php\'');
+        header('Location: https://github.com/an-anthony/TimeMail');
         exit();
     }
     require_once "./common/siteinfo.php"
@@ -11,10 +11,10 @@
 <!doctype html>
 <html>
     <head>
-        <?php require_once './common/meta.php'; ?>
+        <?php require_once './common/view/meta.php'; ?>
     </head>
     <body class="mdui-drawer-body-left mdui-appbar-with-toolbar">
-        <?php require_once './common/navbar.php'; ?>
+        <?php require_once './common/view/navbar.php'; ?>
         <div class="mdui-container">
             <div class="mdui-typo">
                 <h2 class="doc-chapter-title doc-chapter-title-first">欢迎来到<?php echo(TITLE) ?></h2>
@@ -35,7 +35,7 @@
                 </blockquote>
             </div>
         </div>
-        <?php require_once "./common/footer.php";?>
+        <?php require_once "./common/view/footer.php";?>
     </body>
 </html>
 

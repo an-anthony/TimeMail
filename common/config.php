@@ -11,7 +11,7 @@ $conn = mysqli_connect(DATABASE[0],DATABASE[1],DATABASE[2],DATABASE[3]);
 $conns = mysqli_connect(DATABASE[0],DATABASE[1],DATABASE[2],"information_schema");
 
 
-define("EMAILAPI", URL . "email/emailsend.php");
+define("EMAILAPI", URL . "api/emailsend.php");
 
 /*
   function
@@ -44,6 +44,11 @@ else
 {
     $ip = "Unknown";
 }
+
+if(!filter_var($ip, FILTER_VALIDATE_IP)){
+    exit(0);
+}
+
 //获取用户ip
 
 function is_email($user_email)

@@ -22,7 +22,7 @@
         }
 
         function getRuntime() {
-            $this->Starttime = strtotime("2020-02-01");  //开始时间
+            $this->Starttime = strtotime("2024-06-29");  //开始时间
             $this->Nowtime = strtotime(date("Y-m-d"));
             $this->diff = $this->Nowtime - $this->Starttime;
             $this->Runtime = abs(round($this->diff / 86400));
@@ -39,12 +39,13 @@
 <!doctype html>
 <html>
 <head>
-    <?php require_once("./common/meta.php"); ?>
+    <?php require_once("./common/view/meta.php"); ?>
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar">
-    <?php require_once("./common/navbar.php"); ?>
+    <?php require_once("./common/view/navbar.php"); ?>
     <div class="mdui-toolbar mdui-color-theme">
-        <a class="mdui-typo-title">Status</a>
+        <div class="mdui-typo-title">发送计划状态</div>
+        <div class="mdui-typo-title-opacity"><small>实时数据可能会有一定延迟</small></div>
     </div>
     <br />
     <div class="mdui-container doc-container" style='max-width:85%'>
@@ -67,7 +68,7 @@
                     </tbody>
                 </table>
             </div>
-            <?php require_once "./common/footer.php"; ?>
+            <?php require_once "./common/view/footer.php"; ?>
 
 </body>
 </html>

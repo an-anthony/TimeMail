@@ -8,7 +8,8 @@
     define("TITLE","栖望时光邮局");
     //网站名称
 
-    define("DEBUG", false);
+    define("DEBUG", 0); // 0表示禁止PHP输出错误信息，使用E_ALL查看报错
+    error_reporting(DEBUG);
 
     define('EMAIL_SET',array(
         'key' => 'rand', //随机值
